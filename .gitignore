@@ -1,26 +1,17 @@
-
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-.pytest_cache/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Local MLflow database and generated artifacts
+# Local MLflow tracking data
+mlruns/
+mlartifacts/
 mlflow.db
 mlflow.db-*
-mlartifacts/
 
-# Generated model files
-artifacts/*.joblib
-artifacts/*.pkl
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
 
 # Secrets
 .env
-
-# OS files
-.DS_Store
-Thumbs.db
