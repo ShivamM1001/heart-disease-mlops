@@ -57,4 +57,20 @@ docker rm heart-disease-container
 
 The `screenshots/` folder contains the Docker container status, API documentation, health check, and prediction response evidence.
 
+
+## Monitoring and Logging
+
+The API includes lightweight monitoring endpoints and application logging.
+
+- `GET /health` — reports API health and whether the model is loaded.
+- `GET /metrics` — reports request totals, response status counts, prediction totals, prediction classes, and process uptime.
+- `POST /predict` — generates a prediction and logs the predicted class.
+
+Request logs include the HTTP method, endpoint, response status, and request duration. Prediction logs record the predicted class without logging individual input feature values.
+
+### Limitations
+
+Metrics are stored in memory and reset when the API process restarts. They are intended for this educational project and are not a persistent monitoring system or a Prometheus exporter. The model is for demonstration only and must not be used for clinical diagnosis.
+
+
 **Disclaimer:** This project is for educational purposes only and must not be used to diagnose heart disease or make clinical decisions.

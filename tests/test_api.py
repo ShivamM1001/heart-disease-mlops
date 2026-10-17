@@ -71,3 +71,23 @@ def test_predict_rejects_unexpected_field():
 
     assert response.status_code == 422
 
+
+def test_metrics_endpoint():
+    with TestClient(app) as client:
+        response = client.get("/metrics")
+
+    assert response.status_code == 200
+
+    data = response.json()
+    assert "requests_total" in data
+    assert "responses_2xx" in data
+    assert "responses_4xx" in data
+    assert "responses_5xx" in data
+    assert "predictions_total" in data
+    assert "predictions_absence" in data
+    assert "predictions_presence" in data
+    assert "uptime_seconds" in data
+
+    assert isinstance(data["requests_total"], int)
+    assert isinstance(data["uptime_seconds"], (int, float))
+
